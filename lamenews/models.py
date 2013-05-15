@@ -22,7 +22,7 @@ class Post(models.Model):
         return self.title 
     
 class Tag(models.Model):
-    name = models.CharField(max_length=140)
+    name = models.CharField(max_length=140,unique=True)
     
     def __str__(self):
         return self.name
