@@ -5,7 +5,7 @@ class PostManager(models.Manager):
     def get_recent(self):
         return self.all().order_by('create_date')
     def get_top(self):
-        return self.all().order_by('visit_count')
+        return self.all().order_by('-visit_count')
 
 class Post(models.Model):
     title = models.CharField(max_length=140,
