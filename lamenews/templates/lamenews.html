@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>lamenews</title>
+    </head>
+    <body>
+        <div>
+            <div>lamenews</div>
+            <div>
+                {% if user.is_authenticated %}
+                    <p>{{ user.username }}</p>
+                {% else %}
+                    <p>Welcome, new user. Please log in.</p>
+                {% endif %}
+            </div>
+        </div>
+    </body>
+</html>
