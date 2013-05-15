@@ -21,7 +21,8 @@ def register(request):
         form = forms.RegisterForm(request.POST)
         if form.is_valid() == True:
             form.save()
-            user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
+            user = authenticate(username=form.cleaned_data['username'],
+                                password=form.cleaned_data['password1'])
             login_user(request, user)
             return root(request)
     else:

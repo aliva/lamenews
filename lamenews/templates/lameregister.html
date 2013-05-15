@@ -6,15 +6,29 @@
 
 <h2 class="form-signin-heading">Register</h2>
 
-{% for field in register_form %}
-    {{ field.errors }}
-    {{ field }}
-{% endfor %}
-<!--
-<input id="id_username"  class="input-block-level" name="{{ register_form.username.html_name }}"  placeholder="User name" type="text" maxlength="{{ register_form.username.field.max_length }}" />
-<input id="id_password1" class="input-block-level" name="{{ register_form.password1.html_name }}" placeholder="Password" type="password" />
-<input id="id_password2" class="input-block-level" name="{{ register_form.password2.html_name }}" placeholder="Type password again" type="password" />
--->
+{{ register_form.username.errors }}
+<input  id="id_username"
+        placeholder="User name"
+        class="input-block-level"
+        maxlength="{{ register_form.username.field.max_length }}"
+        name="{{ register_form.username.html_name }}"
+        type="text"
+        value="{{ register_form.username.value }}" />
+
+{{ register_form.email.errors }}
+<input  id="id_email"
+        placeholder="email"
+        class="input-block-level"
+        name="email"
+        type="email"
+        value="{{ register_form.email.value }}" />
+
+{{ register_form.password1.errors }}
+<input id="id_password1" placeholder="password" class="input-block-level"  name="{{ register_form.password1.html_name }}" type="password" />
+
+{{ register_form.password2.errors }}    
+<input id="id_password2" placeholder="re-enter password" class="input-block-level"  name="{{ register_form.password2.html_name }}" type="password" />
+
 <button class="btn btn-large btn-primary" type="submit">Register</button>
 
 <input type="hidden" name="next" value="{{ next }}" />
