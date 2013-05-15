@@ -40,6 +40,8 @@ def register(request):
 def post(request, title):
     try:
         post = models.Post.objects.get(title=title)
+        post.visit_count+=1
+        post.save()
         return render(request, 'lamesinglepost.html', {'post':(post,)})
     except models.Post.DoesNotExist:
         return HttpResponse('not found')
