@@ -7,6 +7,7 @@ from django.contrib.auth.views import login as login_view
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_user
+from django.http.response import HttpResponse
 
 def root(request):
     context = {
@@ -35,3 +36,11 @@ def register(request):
         'register_form': form,
     }
     return render(request, 'lameregister.html', context)
+
+def post(request, title):
+    try:
+        post = models.Post.objects.get(title=title)
+        return render(request, 'lamesinglepost.html', {'post':(post,)})
+    except models.Post.DoesNotExist:
+        return HttpResponse('not found')
+    

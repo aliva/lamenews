@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
+    url(r'post/(?P<title>.*)$', 'lamenews.views.post', name='lamenews'),
     url(r'logout$', 'lamenews.views.logout', name='lamenews'),
     url(r'login', 'lamenews.views.login', name='lamenews'),
     url(r'register', 'lamenews.views.register', name='lamenews'),
