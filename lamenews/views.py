@@ -11,3 +11,6 @@ def logout(request):
 
 def login(request):
     return login_django(request, 'lamelogin.html')
+
+def register(request):
+    return login_django(request, 'lamelogin.html')

@@ -31,6 +31,7 @@
                         </ul>
                     </li>
                 {% else %}
+                    <li><a href='{% url 'lamenews.views.register' %}'>register</a></li>
                     <li><a href='{% url 'lamenews.views.login' %}'>login</a></li>
                 {% endif %}
             </ul>
