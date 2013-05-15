@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
-    url(r'', 'lamenews.views.root'),
+    url(r'', 'lamenews.views.root', name='lamenews'),
 )
