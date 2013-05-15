@@ -12,6 +12,7 @@ class Post(models.Model):
     tags = models.ManyToManyField('Tag')
     creator = models.ForeignKey(get_user_model())
     create_date = models.DateTimeField(auto_now_add=True)
+    visit_count = models.IntegerField(default=0)
     
     objects = PostManager()
     
