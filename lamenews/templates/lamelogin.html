@@ -15,7 +15,7 @@
 
 <button class="btn btn-large btn-primary" type="submit">Sign in</button>
 
-<input type="hidden" name="next" value="{{ next }}" />
+<input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}{% url 'lamenews.views.root' %}{% endif %}" />
 </form>
 
 {% endblock %}
