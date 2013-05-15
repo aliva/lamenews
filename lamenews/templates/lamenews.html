@@ -4,7 +4,12 @@
 
 <div>
 <h2>Recent</h2>
-{% include 'lameposts.html' with posts=recent%}
+{% include 'lameposts.html' with posts=recent %}
+</div>
+
+<div>
+<h2>Top</h2>
+{% include 'lameposts.html' with posts=top %}
 </div>
 
 {% endblock %}

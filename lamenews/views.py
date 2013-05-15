@@ -11,7 +11,8 @@ from django.http.response import HttpResponse
 
 def root(request):
     context = {
-        'recent':models.Post.objects.get_recent()
+        'recent':models.Post.objects.get_recent(),
+        'top':models.Post.objects.get_top(),
     }
     return render(request, 'lamenews.html', context)
 
