@@ -57,8 +57,7 @@ def submit(request):
             obj.creator = request.user
             obj.save()
             form.save_m2m()
-            print(form.cleaned_data['tags'])
-            return HttpResponse('yes')
+            return redirect(reverse('lamenews.views.post', args=[obj.title]))
     else:
         form = forms.PostForm()
     context = {
