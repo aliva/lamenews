@@ -55,4 +55,4 @@ class Post(models.Model):
 
         Votes.objects.create(post=self, user=user, vote=value)
         self.save()
-        return 'thanks'
+        return 'done'
