@@ -16,6 +16,9 @@ class Post(models.Model):
     create_date = models.DateTimeField(auto_now_add=True)
     visit_count = models.IntegerField(default=0)
     
+    vote_ups = models.IntegerField(default=0)
+    vote_downs = models.IntegerField(default=0)
+    
     objects = PostManager()
     
     def __str__(self):
@@ -26,3 +29,14 @@ class Tag(models.Model):
     
     def __str__(self):
         return self.name
+    
+class Votes(models.Model):
+    post = models.ForeignKey('Post')
+    user = models.ForeignKey(get_user_model())
+    
+    VOTE_CHOICES = (
+        ('up',  1),
+        ('no',  0),
+        ('dn', -1),
+    )
+    vote = models.SmallIntegerField(choices=VOTE_CHOICES, default='no')
