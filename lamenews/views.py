@@ -1,7 +1,7 @@
 from lamenews import forms
 from lamenews import models
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.views import logout as logout_view
 from django.contrib.auth.views import login as login_view
 from django.core.urlresolvers import reverse
@@ -46,4 +46,9 @@ def post(request, title):
         return render(request, 'lamesinglepost.html', {'post':(post,)})
     except models.Post.DoesNotExist:
         return HttpResponse('not found')
-    
+
+def submit(request):
+    if not request.user.is_authenticated():
+        return redirect(reverse('lamenews.views.login')+'?next='+reverse('lamenews.views.submit'))
+    else:
+        return HttpResponse('aa')
