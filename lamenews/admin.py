@@ -15,5 +15,9 @@ class PostAdmin(admin.ModelAdmin):
 class TagAdmin(admin.ModelAdmin):
     pass
 
+class VotesAdmin(admin.ModelAdmin):
+    pass
+
 admin.site.register(models.Post, PostAdmin)
 admin.site.register(models.Tag, TagAdmin)
+admin.site.register(models.Votes, VotesAdmin)

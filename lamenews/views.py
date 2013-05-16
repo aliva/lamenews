@@ -63,4 +63,15 @@ def submit(request):
     context = {
         'form': form,
     }
-    return render(request, 'lame/submit.html', context) 
+    return render(request, 'lame/submit.html', context)
+
+def vote(request, id, value):
+    msg ='what'
+    if not request.user.is_authenticated():
+        msg = 'login to vote'
+    else:
+        try:
+            msg = models.Post.objects.get(id=id).vote_post(request.user, value)
+        except models.Post.DoesNotExist:
+            msg = 'does not exist'
+    return HttpResponse(msg)
