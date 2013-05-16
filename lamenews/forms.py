@@ -23,6 +23,8 @@ class RegisterForm(UserCreationForm):
         raise forms.ValidationError(self.error_messages['duplicate_email'])
     
 class PostForm(forms.ModelForm):
+    tags = forms.CharField()
+    
     class Meta:
         model = models.Post
         fields = (
@@ -31,3 +33,11 @@ class PostForm(forms.ModelForm):
             'tags',
         )
         
+    def clean_tags(self):
+        tags = self.cleaned_data['tags']
+        tags = [tag.strip() for tag in tags.split(',') if not tag.strip() == '']
+        tmp = []
+        for tag in tags:
+            tmp.append(models.Tag.objects.get_or_create(name=tag)[0])
+        print(tmp)
+        return tmp

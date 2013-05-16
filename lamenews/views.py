@@ -56,7 +56,9 @@ def submit(request):
             obj = form.save(commit=False)
             obj.creator = request.user
             obj.save()
-            return HttpResponse("yes")
+            form.save_m2m()
+            print(form.cleaned_data['tags'])
+            return HttpResponse('yes')
     else:
         form = forms.PostForm()
     context = {
