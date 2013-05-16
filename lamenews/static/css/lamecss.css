@@ -34,6 +34,10 @@ form {
 .form-submit input{
     width: 100%;
 }
+/* helptext */
+.helptext{
+    font-size: x-small;
+}
 
 /* post */
 .post{

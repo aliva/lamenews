@@ -23,7 +23,7 @@ class RegisterForm(UserCreationForm):
         raise forms.ValidationError(self.error_messages['duplicate_email'])
     
 class PostForm(forms.ModelForm):
-    tags = forms.CharField()
+    tags = forms.CharField(help_text='separate tags with comma ","')
     
     class Meta:
         model = models.Post
