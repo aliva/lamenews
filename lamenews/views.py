@@ -50,5 +50,4 @@ def post(request, title):
 def submit(request):
     if not request.user.is_authenticated():
         return redirect(reverse('lamenews.views.login')+'?next='+reverse('lamenews.views.submit'))
-    else:
-        return HttpResponse('aa')
+    return render(request, 'lame/submit.html') 
