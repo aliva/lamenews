@@ -1,0 +1,9 @@
+{% extends 'lame/base.html' %}
+
+{% block content %}
+
+<div>
+{% include 'lame/posts.html' with posts=post no_truncate=True%}
+</div>
+
+{% endblock %}

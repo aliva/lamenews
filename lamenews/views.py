@@ -14,13 +14,13 @@ def root(request):
         'recent':models.Post.objects.get_recent(),
         'top':models.Post.objects.get_top(),
     }
-    return render(request, 'lamenews.html', context)
+    return render(request, 'lame/index.html', context)
 
 def logout(request):
     return logout_view(request, reverse('lamenews.views.root'))
 
 def login(request):
-    return login_view(request, 'lamelogin.html')
+    return login_view(request, 'lame/login.html')
 
 def register(request):
     if request.method == "POST":
@@ -36,14 +36,14 @@ def register(request):
     context = {
         'register_form': form,
     }
-    return render(request, 'lameregister.html', context)
+    return render(request, 'lame/register.html', context)
 
 def post(request, title):
     try:
         post = models.Post.objects.get(title=title)
         post.visit_count+=1
         post.save()
-        return render(request, 'lamesinglepost.html', {'post':(post,)})
+        return render(request, 'lame/post.html', {'post':(post,)})
     except models.Post.DoesNotExist:
         return HttpResponse('not found')
 

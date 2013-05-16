@@ -1,0 +1,15 @@
+{% extends 'lame/base.html' %}
+
+{% block content %}
+
+<div>
+<h2>Recent</h2>
+{% include 'lame/posts.html' with posts=recent %}
+</div>
+
+<div>
+<h2>Top</h2>
+{% include 'lame/posts.html' with posts=top %}
+</div>
+
+{% endblock %}

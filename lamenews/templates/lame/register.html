@@ -1,4 +1,4 @@
-{% extends "lamebase.html" %}
+{% extends "lame/base.html" %}
 {% block content %}
 
 <form class="form-signin" method="post" action="{% url 'lamenews.views.register' %}">
@@ -13,7 +13,7 @@
         maxlength="{{ register_form.username.field.max_length }}"
         name="{{ register_form.username.html_name }}"
         type="text"
-        value="{{ register_form.username.value }}" />
+        {% if register_form.username.value %}value="{{ register_form.username.value }}"{% endif %} />
 
 {{ register_form.email.errors }}
 <input  id="id_email"
@@ -21,7 +21,7 @@
         class="input-block-level"
         name="email"
         type="email"
-        value="{{ register_form.email.value }}" />
+        {% if register_form.email.value %}value="{{ register_form.email.value }}"{% endif %} />
 
 {{ register_form.password1.errors }}
 <input id="id_password1" placeholder="password" class="input-block-level"  name="{{ register_form.password1.html_name }}" type="password" />
