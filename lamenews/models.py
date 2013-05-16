@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 
 class PostManager(models.Manager): 
     def get_recent(self):
-        return self.all().order_by('create_date')
+        return self.all().order_by('-create_date')
     def get_top(self):
         return self.all().order_by('-visit_count')
 
