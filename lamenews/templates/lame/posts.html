@@ -1,25 +1,26 @@
 {% for post in posts %}
     <div class='row post'>
         <h3><a href={% url 'lamenews.views.post' post.title %}>{{ post.title }}</a></h3>
-        <div class='span11'>
-        <div>created by: <a href='{{ post.creator.id }}'>{{ post.creator }}</a>
-            on {{ post.create_date|date}}
-            seen {{ post.visit_count }} times
+        <div>
+            <div>created by <a href='{{ post.creator.id }}'>{{ post.creator }}</a>
+                on {{ post.create_date|date}}
+                seen {{ post.visit_count }} times
+            </div>
+            <div class='content'>
+                {% if no_truncate %}
+                    {{ post.content }}
+                {% else %}
+                    {{ post.content|truncatewords_html:20 }}
+                {% endif %}
+            </div>
+            <div>
+                <ul class="nav nav-pills">
+                    {% for tag in post.tags.all %}
+                    <li class='active'><a href={{ tag }}>{{ tag }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
-        <div class='content'>
-        {% if no_truncate %}
-            {{ post.content }}
-        {% else %}
-            {{ post.content|truncatewords_html:20 }}
-        {% endif %}
-        </div>
-        </div>
-        <div class='span1'>
-        <ul class="nav nav-pills">
-        {% for tag in post.tags.all %}
-            <li class='span1 active'><a href={{ tag }}>{{ tag }}</a></li>
-        {% endfor %}
-        </ul>
-        </div>
+        {# <div class='span1'></div> #}
     </div>
 {% endfor %}
