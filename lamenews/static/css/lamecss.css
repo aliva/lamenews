@@ -1,10 +1,7 @@
 body {
     padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
 }
-
-/* sign in */
-.form-signin {
-    max-width: 300px;
+form {
     padding: 19px 29px 29px;
     margin: 0 auto 20px;
     background-color: #fff;
@@ -16,6 +13,11 @@ body {
     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
     box-shadow: 0 1px 2px rgba(0,0,0,.05);
 }
+
+/* signing */
+.form-signin{
+    max-width: 300px;    
+}
 .form-signin .form-signin-heading, 
 .form-signin .checkbox {
     margin-bottom: 10px;
@@ -26,6 +28,11 @@ body {
     height: auto;
     margin-bottom: 15px;
     padding: 7px 9px;
+}
+/* submit */
+.form-submit textarea,
+.form-submit input{
+    width: 100%;
 }
 
 /* post */
