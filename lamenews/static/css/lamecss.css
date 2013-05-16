@@ -17,6 +17,7 @@ h2{
     text-align: right;
 }
 
+
 /* signing */
 .form-signin{
     max-width: 300px;    
@@ -45,4 +46,8 @@ h2{
 /* post */
 .post{
     direction: rtl;
+}
+.post hr{
+    width: 80%;
+    margin: auto;
 }

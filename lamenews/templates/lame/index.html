@@ -2,14 +2,17 @@
 
 {% block content %}
 
-<div>
-<h2>Recent</h2>
-{% include 'lame/posts.html' with posts=recent %}
+<div class='row-fluid'>
+    <div class='span1'></div>
+    <div class='span4'>
+        <h2>Recent</h2>
+        {% include 'lame/posts.html' with posts=recent %}
+    </div>
+    <div class='span2'></div>
+    <div class='span4'>
+        <h2>Top</h2>
+        {% include 'lame/posts.html' with posts=top %}
+    </div>
+    <div class='span1'></div>
 </div>
-
-<div>
-<h2>Top</h2>
-{% include 'lame/posts.html' with posts=top %}
-</div>
-
 {% endblock %}
