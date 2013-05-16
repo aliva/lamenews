@@ -16,6 +16,9 @@ form {
 h2{
     text-align: right;
 }
+[class^="icon-"], [class*=" icon-"] {
+    background-image: url("/static/glyphicons-halflings.png");
+}
 
 
 /* signing */
@@ -48,7 +51,7 @@ h2{
     direction: rtl;
     margin-left: 10px;
 }
-.post hr{
+hr{
     width: 80%;
     margin: auto;
 }

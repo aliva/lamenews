@@ -2,7 +2,14 @@
 {% for post in posts %}
     <div class='row post'>
         <h3><a href={% url 'lamenews.views.post' post.title %}>{{ post.title }}</a></h3>
-        <div>
+        <div class='pull-right'>
+            <ul class='nav'>
+                <li><a href='#' onclick="return false;"><i class="icon-arrow-up"></i></a></li>
+                <li style="text-align: center;"><i>0</i></li>
+                <li><a href='#'><i class="icon-arrow-down"></i></a></li>
+            </ul>
+        </div>
+        <div class='span11'>
             <div>created by <a href='{{ post.creator.id }}'>{{ post.creator }}</a>
                 on {{ post.create_date|date}}
                 seen {{ post.visit_count }} times
@@ -22,7 +29,6 @@
                 </ul>
             </div>
         </div>
-        {# <div class='span1'></div> #}
-        <hr>
     </div>
+    <hr>
 {% endfor %}
