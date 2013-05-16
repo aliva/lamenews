@@ -55,3 +55,6 @@ hr{
     width: 80%;
     margin: auto;
 }
+.vite-box li{
+    text-align:center;
+}
