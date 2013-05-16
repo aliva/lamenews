@@ -4,8 +4,10 @@ from django.contrib.auth import get_user_model
 class PostManager(models.Manager): 
     def get_recent(self):
         return self.all().order_by('-create_date')
-    def get_top(self):
+    def get_most_visited(self):
         return self.all().order_by('-visit_count')
+    def get_most_upvoted(self):
+        return self.all().order_by('-vote_ups')
 
     
 class Tag(models.Model):

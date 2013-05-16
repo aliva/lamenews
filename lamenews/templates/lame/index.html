@@ -3,15 +3,17 @@
 {% block content %}
 
 <div class='row-fluid'>
-    <div class='span1'></div>
-    <div class='span5'>
+    <div class='span4'>
         <h2>Recent</h2>
-        {% include 'lame/posts.html' with posts=recent %}
+        {% include 'lame/posts.html' with posts=recent id_prefix='recent' %}
     </div>
-    <div class='span5'>
-        <h2>Top</h2>
-        {% include 'lame/posts.html' with posts=top %}
+    <div class='span4'>
+        <h2>most visited</h2>
+        {% include 'lame/posts.html' with posts=most_visited id_prefix='mostvisited' %}
     </div>
-    <div class='span1'></div>
+    <div class='span4'>
+        <h2>Most upvoted</h2>
+        {% include 'lame/posts.html' with posts=most_upvoted id_prefix='mostupvoted' %}
+    </div>
 </div>
 {% endblock %}

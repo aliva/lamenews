@@ -16,7 +16,11 @@ class TagAdmin(admin.ModelAdmin):
     pass
 
 class VotesAdmin(admin.ModelAdmin):
-    pass
+    list_display = (
+        'post',
+        'user',
+        'vote',
+    )
 
 admin.site.register(models.Post, PostAdmin)
 admin.site.register(models.Tag, TagAdmin)

@@ -12,7 +12,8 @@ from django.http.response import HttpResponse
 def root(request):
     context = {
         'recent':models.Post.objects.get_recent(),
-        'top':models.Post.objects.get_top(),
+        'most_visited':models.Post.objects.get_most_visited(),
+        'most_upvoted': models.Post.objects.get_most_upvoted(),
     }
     return render(request, 'lame/index.html', context)
 

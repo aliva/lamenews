@@ -1,4 +1,4 @@
-function vote(url, id, value){
+function vote(url, id, value, id_prefix){
 	var xmlhttp;
 	if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
 		xmlhttp=new XMLHttpRequest();
@@ -10,7 +10,7 @@ function vote(url, id, value){
 	xmlhttp.send();
 	
 	if (xmlhttp.responseText== 'done'){
-		counter = document.getElementById(value+'-counter-'+id);
+		counter = document.getElementById(id_prefix + '-' + value+'-counter-'+id);
 		if (counter){
 			count = Math.abs(parseInt(counter.textContent))+ 1;
 			if (value == 'up')
@@ -18,6 +18,9 @@ function vote(url, id, value){
 			else
 				count = '-' + count;
 			counter.textContent = count 
+		}
+		else{
+			alert('errr');
 		}
 	}
 	else{
