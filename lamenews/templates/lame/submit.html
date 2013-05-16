@@ -1,4 +1,14 @@
 {% extends 'lame/base.html' %}
 
 {% block content %}
+
+<form class="form-signin" method="post" action="{% url 'lamenews.views.submit' %}">
+{% csrf_token %}
+
+{{ form.as_p }}
+
+<button class="btn btn-large btn-primary" type="submit">Submit</button>
+
+</form>
+
 {% endblock %}

@@ -50,4 +50,16 @@ def post(request, title):
 def submit(request):
     if not request.user.is_authenticated():
         return redirect(reverse('lamenews.views.login')+'?next='+reverse('lamenews.views.submit'))
-    return render(request, 'lame/submit.html') 
+    if request.method == 'POST':
+        form = forms.PostForm(request.POST)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.creator = request.user
+            obj.save()
+            return HttpResponse("yes")
+    else:
+        form = forms.PostForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'lame/submit.html', context) 

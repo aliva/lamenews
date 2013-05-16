@@ -1,3 +1,5 @@
+from lamenews import models
+
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
@@ -19,3 +21,13 @@ class RegisterForm(UserCreationForm):
         except get_user_model().DoesNotExist:
             return email
         raise forms.ValidationError(self.error_messages['duplicate_email'])
+    
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = models.Post
+        fields = (
+            'title',
+            'content',
+            'tags',
+        )
+        
