@@ -48,6 +48,14 @@ def post(request, title):
     except models.Post.DoesNotExist:
         return HttpResponse('not found')
 
+def tag(request, name):
+    try:
+        tag = models.Tag.objects.get(name=name)
+        posts = tag.post_set.all()
+    except models.Tag.DoesNotExist:
+        posts = []    
+    return render(request, 'lame/post.html', {'post':posts})
+
 def submit(request):
     if not request.user.is_authenticated():
         return redirect(reverse('lamenews.views.login')+'?next='+reverse('lamenews.views.submit'))

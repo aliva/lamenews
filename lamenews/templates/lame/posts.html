@@ -33,7 +33,7 @@
             <div>
                 <ul class="nav nav-pills">
                     {% for tag in post.tags.all %}
-                    <li class='active'><a href={{ tag }}>{{ tag }}</a></li>
+                    <li class='active'><a href="{% url 'lamenews.views.tag' tag %}">{{ tag }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
