@@ -45,7 +45,9 @@
             <div class='comments'><h4>Comments</h4>
         {% endif %}
         <div class='comment'>
-            <h6>{{ comment.user }}</h6>
+            <h6 {% if comment.user == posts.0.creator %}class='comment-owner'{% endif%}>
+                {{ comment.user }}
+            </h6>
             <div>created at {{ comment.create_date|date }}</div>
             <div>{{ comment.content }}</div>
         </div>

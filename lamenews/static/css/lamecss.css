@@ -69,3 +69,6 @@ hr{
     margin-right: 2em;
     border-bottom: solid 0.1px gray;
 }
+.comment-owner{
+    color: blue;
+}
