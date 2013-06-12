@@ -45,8 +45,11 @@ def post(request, title):
         post.visit_count+=1
         post.save()
         comment_form = forms.CommentForm()
+        comments = models.Comment.objects.filter(post=post)
         return render(request, 'lame/post.html',
-                      {'post':(post,), 'comment_form':comment_form,}
+                        {'post':(post,),
+                        'comment_form':comment_form,
+                        'comments':comments}
                     )
     except models.Post.DoesNotExist:
         return HttpResponse('not found')

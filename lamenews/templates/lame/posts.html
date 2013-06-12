@@ -40,10 +40,27 @@
         </div>
     </div>
     <hr>
+    {% for comment in comments %}
+        {% if forloop.first %}
+            <div class='comments'><h4>Comments</h4>
+        {% endif %}
+        <div class='comment'>
+            <h6>{{ comment.user }}</h6>
+            <div>created at {{ comment.create_date|date }}</div>
+            <div>{{ comment.content }}</div>
+        </div>
+        {% if forloop.last %}
+            </div>
+        {% endif %}
+    {% endfor %}
     {% if user.is_authenticated and comment_form %}
         <form action="{% url 'lamenews.views.comment' posts.0.id %}" method='post'>
             {% csrf_token %}
-            {{ comment_form.as_p }}
+            <h5>Write a comment:</h5>
+            <textarea
+                class="input-block-level"
+                id="id_content" rows="10"
+                name="content" cols="40"></textarea>
             <button class="btn btn-large btn-primary" type="submit">Comment</button>
         </form>
     {% endif %}

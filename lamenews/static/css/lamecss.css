@@ -21,11 +21,11 @@ h2{
 }
 
 
-/* signing */
+/* sign in */
 .form-signin{
-    max-width: 300px;    
+    max-width: 300px;
 }
-.form-signin .form-signin-heading, 
+.form-signin .form-signin-heading,
 .form-signin .checkbox {
     margin-bottom: 10px;
 }
@@ -57,4 +57,15 @@ hr{
 }
 .vite-box li{
     text-align:center;
+}
+
+/* comment */
+.comments{
+    margin-top: 4em;
+    margin-bottom: 4em;
+    direction: rtl;
+}
+.comment{
+    margin-right: 2em;
+    border-bottom: solid 0.1px gray;
 }

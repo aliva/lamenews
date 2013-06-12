@@ -9,7 +9,6 @@ class PostManager(models.Manager):
     def get_most_upvoted(self):
         return self.all().order_by('-vote_ups')
 
-
 class Tag(models.Model):
     name = models.CharField(max_length=140,unique=True)
 
