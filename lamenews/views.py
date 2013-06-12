@@ -78,7 +78,7 @@ def submit(request):
     context = {
         'form': form,
     }
-    return render(request, 'lame/submit.html', context)
+    return render(request, 'lame/submitform.html', context)
 
 def vote(request, id, value):
     msg ='what'
