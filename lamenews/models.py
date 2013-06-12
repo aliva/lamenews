@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
-class PostManager(models.Manager): 
+class PostManager(models.Manager):
     def get_recent(self):
         return self.all().order_by('-create_date')
     def get_most_visited(self):
@@ -9,17 +9,17 @@ class PostManager(models.Manager):
     def get_most_upvoted(self):
         return self.all().order_by('-vote_ups')
 
-    
+
 class Tag(models.Model):
     name = models.CharField(max_length=140,unique=True)
-    
+
     def __str__(self):
         return self.name
-    
+
 class Votes(models.Model):
     post = models.ForeignKey('Post')
     user = models.ForeignKey(get_user_model())
-    
+
     VOTE_CHOICES = (
         ('up',  1),
         ('no',  0),
@@ -29,25 +29,25 @@ class Votes(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=140,
-                             unique=True) 
+                             unique=True)
     content = models.TextField()
     tags = models.ManyToManyField('Tag')
     creator = models.ForeignKey(get_user_model())
     create_date = models.DateTimeField(auto_now_add=True)
     visit_count = models.IntegerField(default=0)
-    
+
     vote_ups = models.IntegerField(default=0)
     vote_downs = models.IntegerField(default=0)
-    
+
     objects = PostManager()
-    
+
     def __str__(self):
         return self.title
-    
+
     def vote_post(self, user, value):
         if Votes.objects.filter(post=self, user=user).exists():
             return 'already voted'
-        
+
         if value == 'up':
             value = 1
             self.vote_ups +=1
@@ -58,3 +58,9 @@ class Post(models.Model):
         Votes.objects.create(post=self, user=user, vote=value)
         self.save()
         return 'done'
+
+class Comment(models.Model):
+    post = models.ForeignKey('Post')
+    user = models.ForeignKey(get_user_model())
+    content = models.TextField()
+    create_date = models.DateTimeField(auto_now_add=True)
