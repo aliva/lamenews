@@ -22,6 +22,10 @@ class VotesAdmin(admin.ModelAdmin):
         'vote',
     )
 
+class CommentAdmin(admin.ModelAdmin):
+    pass
+
 admin.site.register(models.Post, PostAdmin)
 admin.site.register(models.Tag, TagAdmin)
 admin.site.register(models.Votes, VotesAdmin)
+admin.site.register(models.Comment, CommentAdmin)

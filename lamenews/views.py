@@ -44,7 +44,10 @@ def post(request, title):
         post = models.Post.objects.get(title=title)
         post.visit_count+=1
         post.save()
-        return render(request, 'lame/post.html', {'post':(post,)})
+        comment_form = forms.CommentForm()
+        return render(request, 'lame/post.html',
+                      {'post':(post,), 'comment_form':comment_form,}
+                    )
     except models.Post.DoesNotExist:
         return HttpResponse('not found')
 
@@ -53,7 +56,7 @@ def tag(request, name):
         tag = models.Tag.objects.get(name=name)
         posts = tag.post_set.all()
     except models.Tag.DoesNotExist:
-        posts = []    
+        posts = []
     return render(request, 'lame/post.html', {'post':posts})
 
 def submit(request):
@@ -84,3 +87,19 @@ def vote(request, id, value):
         except models.Post.DoesNotExist:
             msg = 'does not exist'
     return HttpResponse(msg)
+
+def comment(request, id):
+    if not request.user.is_authenticated():
+        return redirect(reverse('lamenews.views.login'))
+    try:
+        post = models.Post.objects.get(id=id)
+    except models.Post.DoesNotExist:
+        return HttpResponse('post not found')
+    if request.method == 'POST':
+        form = forms.CommentForm(request.POST)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.user = request.user
+            obj.post = post
+            obj.save()
+    return redirect(reverse('lamenews.views.post', args=[post.title,]))

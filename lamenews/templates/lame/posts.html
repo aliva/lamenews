@@ -40,4 +40,11 @@
         </div>
     </div>
     <hr>
+    {% if user.is_authenticated and comment_form %}
+        <form action="{% url 'lamenews.views.comment' posts.0.id %}" method='post'>
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <button class="btn btn-large btn-primary" type="submit">Comment</button>
+        </form>
+    {% endif %}
 {% endfor %}
