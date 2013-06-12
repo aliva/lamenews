@@ -23,7 +23,11 @@ class VotesAdmin(admin.ModelAdmin):
     )
 
 class CommentAdmin(admin.ModelAdmin):
-    pass
+    list_display = (
+        'post',
+        'user',
+        'create_date',
+    )
 
 admin.site.register(models.Post, PostAdmin)
 admin.site.register(models.Tag, TagAdmin)
