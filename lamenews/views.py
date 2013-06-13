@@ -13,7 +13,7 @@ def root(request):
     context = {
         'recent':models.Post.objects.get_recent(),
         'most_visited':models.Post.objects.get_most_visited(),
-        'most_upvoted': models.Post.objects.get_most_upvoted(),
+        'most_upvoted': models.Post.objects.get_most_voted(),
     }
     return render(request, 'lame/index.html', context)
 

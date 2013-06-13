@@ -6,8 +6,8 @@ class PostManager(models.Manager):
         return self.all().order_by('-create_date')
     def get_most_visited(self):
         return self.all().order_by('-visit_count')
-    def get_most_upvoted(self):
-        return self.all().order_by('-vote_ups')
+    def get_most_voted(self):
+        return self.all().order_by('-vote_total')
 
 class Tag(models.Model):
     name = models.CharField(max_length=140,unique=True)
