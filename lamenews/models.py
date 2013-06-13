@@ -37,6 +37,7 @@ class Post(models.Model):
 
     vote_ups = models.IntegerField(default=0)
     vote_downs = models.IntegerField(default=0)
+    vote_total = models.IntegerField(default=0)
 
     objects = PostManager()
 
