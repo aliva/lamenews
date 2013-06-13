@@ -54,6 +54,7 @@ class Post(models.Model):
         else:
             value = -1
             self.vote_downs += 1
+        self.vote_total = self.vote_ups - self.vote_downs
 
         Votes.objects.create(post=self, user=user, vote=value)
         self.save()
