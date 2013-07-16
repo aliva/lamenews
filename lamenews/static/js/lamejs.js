@@ -5,10 +5,10 @@ function vote(url, id, value, id_prefix){
 	}
 	else{// code for IE6, IE5
 		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	}	
+	}
 	xmlhttp.open("GET",url, false);
 	xmlhttp.send();
-	
+
 	if (xmlhttp.responseText== 'done'){
 		counter = document.getElementById(id_prefix + '-' + value+'-counter-'+id);
 		if (counter){
@@ -17,7 +17,7 @@ function vote(url, id, value, id_prefix){
 				count = '+' + count;
 			else
 				count = '-' + count;
-			counter.textContent = count 
+			counter.textContent = count
 		}
 		else{
 			alert('errr');
